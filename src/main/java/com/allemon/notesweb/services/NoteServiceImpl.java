@@ -1,6 +1,8 @@
 package com.allemon.notesweb.services;
 
+import com.allemon.notesweb.domain.dto.NoteDTO;
 import com.allemon.notesweb.domain.exceptions.NoteNotFoundException;
+import com.allemon.notesweb.domain.mapper.NoteMapper;
 import com.allemon.notesweb.domain.model.Note;
 import com.allemon.notesweb.repository.NoteRepository;
 import lombok.RequiredArgsConstructor;
@@ -13,6 +15,7 @@ import java.util.List;
 public class NoteServiceImpl implements NoteService {
     private static final String NOTE_NOT_FOUND_MESSAGE = "Note was not found in Database.";
     private final NoteRepository noteRepository;
+    private final NoteMapper noteMapper;
 
     @Override
     public void create(String title, String content) {
@@ -23,8 +26,8 @@ public class NoteServiceImpl implements NoteService {
     }
 
     @Override
-    public void save(Note note) {
-        noteRepository.save(note);
+    public void save(NoteDTO noteDTO) {
+        noteRepository.save(noteMapper.mapToNote(noteDTO));
     }
 
     @Override
@@ -53,4 +56,6 @@ public class NoteServiceImpl implements NoteService {
 
         noteRepository.save(newNote);
     }
+
+
 }
