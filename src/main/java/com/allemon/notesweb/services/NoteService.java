@@ -12,5 +12,5 @@ public interface NoteService {
     Note getById(int id);
     List<Note> getAll();
     void deleteById(int id);
-    void update(int oldId, Note newNote);
+    void update(Integer oldId, NoteDTO newNoteDTO);
 }

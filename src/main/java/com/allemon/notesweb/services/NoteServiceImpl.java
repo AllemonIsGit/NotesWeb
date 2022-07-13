@@ -47,14 +47,14 @@ public class NoteServiceImpl implements NoteService {
     }
 
     @Override
-    public void update(int oldId, Note newNote) {
-        Note oldNote = noteRepository.findById(oldId).
+    public void update(Integer oldId, NoteDTO newNoteDTO) {
+        Note updatedNote = noteRepository.findById(oldId).
                 orElseThrow(() -> new NoteNotFoundException(NOTE_NOT_FOUND_MESSAGE));
 
-        oldNote.setTitle(newNote.getTitle());
-        oldNote.setContent(newNote.getContent());
+        updatedNote.setTitle(newNoteDTO.getTitle());
+        updatedNote.setContent(newNoteDTO.getContent());
 
-        noteRepository.save(newNote);
+        noteRepository.save(updatedNote);
     }
 
 

@@ -35,6 +35,11 @@ public class NoteController {
         return noteService.getAll();
     }
 
+    @PutMapping("/{id}")
+    public void patchNote(@PathVariable Integer id, @RequestBody NoteDTO noteDTO) {
+        noteService.update(id, noteDTO);
+    }
+
 
 
 }
