@@ -4,6 +4,8 @@ import com.allemon.notesweb.domain.dto.NoteDTO;
 import com.allemon.notesweb.domain.model.Note;
 import com.allemon.notesweb.services.NoteService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
@@ -21,23 +23,25 @@ public class NoteController {
     }
 
     @GetMapping("/{id}")
-    public Note getNote(@PathVariable Integer id) {
-        return noteService.getById(id);
+    public ResponseEntity<Note> getNote(@PathVariable Integer id) {
+        return ResponseEntity.status(HttpStatus.OK).body(noteService.getById(id));
     }
 
     @PostMapping
-    public void createNote(@RequestBody @Valid NoteDTO noteDTO) {
+    public ResponseEntity<Void> createNote(@RequestBody @Valid NoteDTO noteDTO) {
         noteService.save(noteDTO);
+        return ResponseEntity.status(HttpStatus.CREATED).build();
     }
 
     @GetMapping
-    public List<Note> getAllNotes() {
-        return noteService.getAll();
+    public ResponseEntity<List<Note>> getAllNotes() {
+        return ResponseEntity.status(HttpStatus.OK).body(noteService.getAll());
     }
 
     @PutMapping("/{id}")
-    public void patchNote(@PathVariable Integer id, @RequestBody NoteDTO noteDTO) {
+    public ResponseEntity<Void> patchNote(@PathVariable Integer id, @RequestBody NoteDTO noteDTO) {
         noteService.update(id, noteDTO);
+        return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
     }
 
 

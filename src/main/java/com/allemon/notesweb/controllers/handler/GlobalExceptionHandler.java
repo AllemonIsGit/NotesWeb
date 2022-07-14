@@ -1,5 +1,6 @@
 package com.allemon.notesweb.controllers.handler;
 
+import com.allemon.notesweb.domain.exceptions.NoteNotFoundException;
 import org.springframework.context.support.DefaultMessageSourceResolvable;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.ObjectError;
@@ -12,8 +13,8 @@ import java.util.List;
 @ControllerAdvice
 public class GlobalExceptionHandler {
 
-    @ExceptionHandler(RuntimeException.class)
-    public ResponseEntity<String> handleException(RuntimeException exception) {
+    @ExceptionHandler(NoteNotFoundException.class)
+    public ResponseEntity<String> handleException(NoteNotFoundException exception) {
         return ResponseEntity.badRequest().body(exception.getMessage());
     }
 
