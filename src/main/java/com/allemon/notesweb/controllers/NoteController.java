@@ -1,6 +1,6 @@
 package com.allemon.notesweb.controllers;
 
-import com.allemon.notesweb.domain.dto.NoteDTO;
+import com.allemon.notesweb.domain.dto.CreateNoteRequest;
 import com.allemon.notesweb.domain.model.Note;
 import com.allemon.notesweb.services.NoteService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,8 +28,8 @@ public class NoteController {
     }
 
     @PostMapping
-    public ResponseEntity<Void> createNote(@RequestBody @Valid NoteDTO noteDTO) {
-        noteService.save(noteDTO);
+    public ResponseEntity<Void> createNote(@RequestBody @Valid CreateNoteRequest createNoteRequest) {
+        noteService.save(createNoteRequest);
         return ResponseEntity.status(HttpStatus.CREATED).build();
     }
 
@@ -39,8 +39,8 @@ public class NoteController {
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<Void> patchNote(@PathVariable Integer id, @RequestBody NoteDTO noteDTO) {
-        noteService.update(id, noteDTO);
+    public ResponseEntity<Void> patchNote(@PathVariable Integer id, @RequestBody @Valid CreateNoteRequest createNoteRequest) {
+        noteService.update(id, createNoteRequest);
         return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
     }
 

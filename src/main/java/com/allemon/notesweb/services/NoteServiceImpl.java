@@ -1,6 +1,6 @@
 package com.allemon.notesweb.services;
 
-import com.allemon.notesweb.domain.dto.NoteDTO;
+import com.allemon.notesweb.domain.dto.CreateNoteRequest;
 import com.allemon.notesweb.domain.exceptions.NoteNotFoundException;
 import com.allemon.notesweb.domain.mapper.NoteMapper;
 import com.allemon.notesweb.domain.model.Note;
@@ -26,8 +26,8 @@ public class NoteServiceImpl implements NoteService {
     }
 
     @Override
-    public void save(NoteDTO noteDTO) {
-        noteRepository.save(noteMapper.mapToNote(noteDTO));
+    public void save(CreateNoteRequest createNoteRequest) {
+        noteRepository.save(noteMapper.mapToNote(createNoteRequest));
     }
 
     @Override
@@ -47,13 +47,15 @@ public class NoteServiceImpl implements NoteService {
     }
 
     @Override
-    public void update(Integer oldId, NoteDTO newNoteDTO) {
+    public void update(Integer oldId, CreateNoteRequest newCreateNoteRequest) {
         Note updatedNote = noteRepository.findById(oldId).
                 orElseThrow(() -> new NoteNotFoundException(NOTE_NOT_FOUND_MESSAGE));
-
-        updatedNote.setTitle(newNoteDTO.getTitle());
-        updatedNote.setContent(newNoteDTO.getContent());
-
+        if (newCreateNoteRequest.getTitle() != null) {
+            updatedNote.setTitle(newCreateNoteRequest.getTitle());
+        }
+        if (newCreateNoteRequest.getContent() != null) {
+            updatedNote.setContent(newCreateNoteRequest.getContent());
+        }
         noteRepository.save(updatedNote);
     }
 
