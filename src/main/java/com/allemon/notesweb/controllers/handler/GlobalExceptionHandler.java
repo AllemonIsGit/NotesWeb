@@ -1,5 +1,6 @@
 package com.allemon.notesweb.controllers.handler;
 
+import com.allemon.notesweb.domain.exceptions.AuthException;
 import com.allemon.notesweb.domain.exceptions.NoteNotFoundException;
 import org.springframework.context.support.DefaultMessageSourceResolvable;
 import org.springframework.http.ResponseEntity;
@@ -15,6 +16,11 @@ public class GlobalExceptionHandler {
 
     @ExceptionHandler(NoteNotFoundException.class)
     public ResponseEntity<String> handleException(NoteNotFoundException exception) {
+        return ResponseEntity.badRequest().body(exception.getMessage());
+    }
+
+    @ExceptionHandler(AuthException.class)
+    public ResponseEntity<String> handleAuthException(AuthException exception) {
         return ResponseEntity.badRequest().body(exception.getMessage());
     }
 

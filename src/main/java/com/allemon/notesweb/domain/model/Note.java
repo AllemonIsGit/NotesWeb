@@ -6,6 +6,8 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 @Entity
 @Table(name = "notes")
@@ -22,6 +24,8 @@ public class Note {
     private String title;
     @Lob
     private String content;
+    private String username;
+    private LocalDateTime dateCreated;
 
     public Note(String title, String content) {
         this.title = title;
