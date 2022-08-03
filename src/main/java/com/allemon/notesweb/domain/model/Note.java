@@ -1,12 +1,8 @@
 package com.allemon.notesweb.domain.model;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 import javax.persistence.*;
-import java.time.LocalDateTime;
 
 @Entity
 @Table(name = "notes")
@@ -14,6 +10,7 @@ import java.time.LocalDateTime;
 @AllArgsConstructor
 @Getter
 @Setter
+@Builder
 public class Note {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -23,8 +20,10 @@ public class Note {
     private String title;
     @Lob
     private String content;
-    private String username;
-    private LocalDateTime dateCreated;
+    @ManyToOne
+    private User user;
+//    @Column(updatable = false, nullable = false)
+//    private LocalDateTime dateCreated;
 
     public Note(String title, String content) {
         this.title = title;

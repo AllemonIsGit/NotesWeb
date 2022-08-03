@@ -5,8 +5,11 @@ import com.allemon.notesweb.domain.exceptions.EmailAlreadyExistsException;
 import com.allemon.notesweb.domain.exceptions.PasswordsDoesNotMatchException;
 import com.allemon.notesweb.domain.exceptions.UserAlreadyExistsException;
 import com.allemon.notesweb.domain.mapper.UserMapper;
+import com.allemon.notesweb.domain.model.User;
 import com.allemon.notesweb.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
 import java.util.Objects;
@@ -27,12 +30,6 @@ public class AuthServiceImpl implements AuthService {
     public void register(CreateUserRequest createUserRequest) {
         validate(createUserRequest);
         userRepository.save(userMapper.mapToUser(createUserRequest));
-    }
-
-    //TODO
-    @Override
-    public void login() {
-
     }
 
     private void validate(CreateUserRequest createUserRequest) {
@@ -58,6 +55,16 @@ public class AuthServiceImpl implements AuthService {
 
     private Boolean doesEmailExists(String email) {
         return userRepository.existsByEmail(email);
+    }
+
+    @Override
+    public User getLoggedOnUser() {
+        return userRepository
+                .findByUsername((String) SecurityContextHolder
+                        .getContext()
+                        .getAuthentication()
+                        .getPrincipal())
+                .orElseThrow(() -> new UsernameNotFoundException("Username not registered."));
     }
 
 

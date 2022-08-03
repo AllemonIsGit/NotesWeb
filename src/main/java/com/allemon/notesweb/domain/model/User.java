@@ -8,7 +8,6 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
-import java.time.LocalDateTime;
 import java.util.Collection;
 
 @Entity
@@ -25,8 +24,8 @@ public class User implements UserDetails {
     @Column(nullable = false)
     private String password;
     private String email;
-    @Column(updatable = false, nullable = false)
-    private LocalDateTime dateCreated;
+//    @Column(updatable = false, nullable = false)
+//    private LocalDateTime dateCreated;
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
