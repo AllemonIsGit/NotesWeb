@@ -1,6 +1,6 @@
 package com.allemon.notesweb.service;
 
-import com.allemon.notesweb.domain.dto.CreateUserRequest;
+import com.allemon.notesweb.domain.dto.request.CreateUserRequest;
 import com.allemon.notesweb.domain.model.User;
 import com.allemon.notesweb.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;

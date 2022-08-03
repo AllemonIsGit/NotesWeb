@@ -1,7 +1,7 @@
 package com.allemon.notesweb.config;
 
 import com.allemon.notesweb.domain.mapper.UserMapper;
-import com.allemon.notesweb.filter.CustomAuthFilter;
+import com.allemon.notesweb.filter.CustomAuthenticationFilter;
 import com.allemon.notesweb.filter.CustomAuthorizationFilter;
 import com.allemon.notesweb.service.UserService;
 import com.allemon.notesweb.token.JWTTokenUtil;
@@ -62,8 +62,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         auth.authenticationProvider(daoAuthenticationProviderBean());
     }
 
-    private CustomAuthFilter getAuthenticationFilter() throws Exception {
-        CustomAuthFilter filter = new CustomAuthFilter(objectMapper, authenticationManagerBean(),jwtTokenUtil, userMapper);
+    private CustomAuthenticationFilter getAuthenticationFilter() throws Exception {
+        CustomAuthenticationFilter filter = new CustomAuthenticationFilter(objectMapper, authenticationManagerBean(),jwtTokenUtil, userMapper);
         filter.setFilterProcessesUrl("/api/v1/auth/login");
         return filter;
     }

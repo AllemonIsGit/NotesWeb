@@ -1,6 +1,6 @@
 package com.allemon.notesweb.service;
 
-import com.allemon.notesweb.domain.dto.CreateNoteRequest;
+import com.allemon.notesweb.domain.dto.request.CreateNoteRequest;
 import com.allemon.notesweb.domain.exception.AccessForbiddenException;
 import com.allemon.notesweb.domain.exception.NoteNotFoundException;
 import com.allemon.notesweb.domain.mapper.NoteMapper;

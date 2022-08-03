@@ -1,4 +1,4 @@
-package com.allemon.notesweb.domain.dto;
+package com.allemon.notesweb.domain.dto.request;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

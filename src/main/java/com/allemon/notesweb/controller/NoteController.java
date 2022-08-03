@@ -1,6 +1,6 @@
 package com.allemon.notesweb.controller;
 
-import com.allemon.notesweb.domain.dto.CreateNoteRequest;
+import com.allemon.notesweb.domain.dto.request.CreateNoteRequest;
 import com.allemon.notesweb.domain.model.Note;
 import com.allemon.notesweb.service.NoteService;
 import org.springframework.beans.factory.annotation.Autowired;

@@ -1,7 +1,7 @@
 package com.allemon.notesweb.service;
 
 
-import com.allemon.notesweb.domain.dto.CreateNoteRequest;
+import com.allemon.notesweb.domain.dto.request.CreateNoteRequest;
 import com.allemon.notesweb.domain.model.Note;
 
 import java.util.List;

@@ -1,7 +1,7 @@
 package com.allemon.notesweb.domain.mapper;
 
-import com.allemon.notesweb.domain.dto.CreateUserRequest;
-import com.allemon.notesweb.domain.dto.UserResponse;
+import com.allemon.notesweb.domain.dto.request.CreateUserRequest;
+import com.allemon.notesweb.domain.dto.response.UserResponse;
 import com.allemon.notesweb.domain.model.User;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.crypto.password.PasswordEncoder;

@@ -1,4 +1,4 @@
-package com.allemon.notesweb.domain.dto;
+package com.allemon.notesweb.domain.dto.response;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
