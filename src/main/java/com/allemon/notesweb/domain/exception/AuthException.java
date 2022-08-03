@@ -1,4 +1,4 @@
-package com.allemon.notesweb.domain.exceptions;
+package com.allemon.notesweb.domain.exception;
 
 public abstract class AuthException extends RuntimeException {
     

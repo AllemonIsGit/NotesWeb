@@ -1,8 +1,8 @@
-package com.allemon.notesweb.controllers;
+package com.allemon.notesweb.controller;
 
 import com.allemon.notesweb.domain.dto.CreateNoteRequest;
 import com.allemon.notesweb.domain.model.Note;
-import com.allemon.notesweb.services.NoteService;
+import com.allemon.notesweb.service.NoteService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

@@ -7,6 +7,8 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Component;
 
+import java.time.LocalDateTime;
+
 @Component
 @RequiredArgsConstructor
 public class UserMapper {
@@ -17,7 +19,7 @@ public class UserMapper {
                 .username(createUserRequest.getUsername())
                 .password(passwordEncoder.encode(createUserRequest.getPassword()))
                 .email(createUserRequest.getEmail())
-//                .dateCreated(LocalDateTime.now())
+                .dateCreated(LocalDateTime.now())
                 .build();
     }
 

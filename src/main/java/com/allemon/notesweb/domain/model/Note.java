@@ -3,6 +3,7 @@ package com.allemon.notesweb.domain.model;
 import lombok.*;
 
 import javax.persistence.*;
+import java.time.LocalDateTime;
 
 @Entity
 @Table(name = "notes")
@@ -22,8 +23,8 @@ public class Note {
     private String content;
     @ManyToOne
     private User user;
-//    @Column(updatable = false, nullable = false)
-//    private LocalDateTime dateCreated;
+    @Column(updatable = false, nullable = false)
+    private LocalDateTime dateCreated;
 
     public Note(String title, String content) {
         this.title = title;

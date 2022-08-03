@@ -1,6 +1,6 @@
-package com.allemon.notesweb.controllers;
+package com.allemon.notesweb.controller;
 
-import com.allemon.notesweb.services.UserService;
+import com.allemon.notesweb.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestMapping;

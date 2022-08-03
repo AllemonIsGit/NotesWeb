@@ -1,14 +1,13 @@
-package com.allemon.notesweb.services;
+package com.allemon.notesweb.service;
 
 import com.allemon.notesweb.domain.dto.CreateNoteRequest;
-import com.allemon.notesweb.domain.exceptions.AccessForbiddenException;
-import com.allemon.notesweb.domain.exceptions.NoteNotFoundException;
+import com.allemon.notesweb.domain.exception.AccessForbiddenException;
+import com.allemon.notesweb.domain.exception.NoteNotFoundException;
 import com.allemon.notesweb.domain.mapper.NoteMapper;
 import com.allemon.notesweb.domain.model.Note;
 import com.allemon.notesweb.domain.model.User;
 import com.allemon.notesweb.repository.NoteRepository;
 import lombok.RequiredArgsConstructor;
-import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -17,7 +16,7 @@ import java.util.List;
 @RequiredArgsConstructor
 public class NoteServiceImpl implements NoteService {
     private static final String NOTE_NOT_FOUND_MESSAGE = "Note was not found in Database.";
-    private static final String FORBIDDEN_ACCESS_MESSAGE = "You can't access this content.";
+    private static final String FORBIDDEN_ACCESS_MESSAGE = "Request rejected.";
 
     private final NoteRepository noteRepository;
     private final NoteMapper noteMapper;

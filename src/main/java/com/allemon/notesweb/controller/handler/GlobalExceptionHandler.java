@@ -1,8 +1,10 @@
-package com.allemon.notesweb.controllers.handler;
+package com.allemon.notesweb.controller.handler;
 
-import com.allemon.notesweb.domain.exceptions.AuthException;
-import com.allemon.notesweb.domain.exceptions.NoteNotFoundException;
+import com.allemon.notesweb.domain.exception.AccessForbiddenException;
+import com.allemon.notesweb.domain.exception.AuthException;
+import com.allemon.notesweb.domain.exception.NoteNotFoundException;
 import org.springframework.context.support.DefaultMessageSourceResolvable;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.ObjectError;
 import org.springframework.web.bind.MethodArgumentNotValidException;
@@ -29,5 +31,10 @@ public class GlobalExceptionHandler {
         List<ObjectError> errorList = exception.getAllErrors();
         List<String> errorMessages = errorList.stream().map(DefaultMessageSourceResolvable::getDefaultMessage).toList();
         return ResponseEntity.badRequest().body(errorMessages);
+    }
+
+    @ExceptionHandler(AccessForbiddenException.class)
+    public ResponseEntity<String> handleAccessForbiddenException(AccessForbiddenException exception) {
+        return ResponseEntity.status(HttpStatus.FORBIDDEN).body(exception.getMessage());
     }
 }

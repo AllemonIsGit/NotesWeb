@@ -1,9 +1,9 @@
-package com.allemon.notesweb.services;
+package com.allemon.notesweb.service;
 
 import com.allemon.notesweb.domain.dto.CreateUserRequest;
-import com.allemon.notesweb.domain.exceptions.EmailAlreadyExistsException;
-import com.allemon.notesweb.domain.exceptions.PasswordsDoesNotMatchException;
-import com.allemon.notesweb.domain.exceptions.UserAlreadyExistsException;
+import com.allemon.notesweb.domain.exception.EmailAlreadyExistsException;
+import com.allemon.notesweb.domain.exception.PasswordsDoesNotMatchException;
+import com.allemon.notesweb.domain.exception.UserAlreadyExistsException;
 import com.allemon.notesweb.domain.mapper.UserMapper;
 import com.allemon.notesweb.domain.model.User;
 import com.allemon.notesweb.repository.UserRepository;

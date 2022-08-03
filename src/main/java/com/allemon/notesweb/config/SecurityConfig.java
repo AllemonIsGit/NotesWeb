@@ -3,7 +3,7 @@ package com.allemon.notesweb.config;
 import com.allemon.notesweb.domain.mapper.UserMapper;
 import com.allemon.notesweb.filter.CustomAuthFilter;
 import com.allemon.notesweb.filter.CustomAuthorizationFilter;
-import com.allemon.notesweb.services.UserService;
+import com.allemon.notesweb.service.UserService;
 import com.allemon.notesweb.token.JWTTokenUtil;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.RequiredArgsConstructor;

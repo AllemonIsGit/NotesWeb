@@ -5,6 +5,8 @@ import com.allemon.notesweb.domain.model.Note;
 import com.allemon.notesweb.domain.model.User;
 import org.springframework.stereotype.Component;
 
+import java.time.LocalDateTime;
+
 @Component
 public class NoteMapper {
 
@@ -12,7 +14,7 @@ public class NoteMapper {
         return Note.builder()
                 .title(createNoteRequest.getTitle())
                 .content(createNoteRequest.getContent())
-//                .dateCreated(LocalDateTime.now())
+                .dateCreated(LocalDateTime.now())
                 .user(user)
                 .build();
     }

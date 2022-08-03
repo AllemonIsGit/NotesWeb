@@ -1,8 +1,8 @@
-package com.allemon.notesweb.controllers;
+package com.allemon.notesweb.controller;
 
 
 import com.allemon.notesweb.domain.dto.CreateUserRequest;
-import com.allemon.notesweb.services.AuthService;
+import com.allemon.notesweb.service.AuthService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

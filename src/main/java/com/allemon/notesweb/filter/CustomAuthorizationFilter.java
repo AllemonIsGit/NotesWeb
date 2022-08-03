@@ -1,7 +1,7 @@
 package com.allemon.notesweb.filter;
 
 import com.allemon.notesweb.domain.model.User;
-import com.allemon.notesweb.services.UserService;
+import com.allemon.notesweb.service.UserService;
 import com.allemon.notesweb.token.JWTTokenUtil;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
