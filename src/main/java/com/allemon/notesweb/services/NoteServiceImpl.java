@@ -8,6 +8,7 @@ import com.allemon.notesweb.domain.model.Note;
 import com.allemon.notesweb.domain.model.User;
 import com.allemon.notesweb.repository.NoteRepository;
 import lombok.RequiredArgsConstructor;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -46,16 +47,20 @@ public class NoteServiceImpl implements NoteService {
     }
 
     @Override
-    //TODO authorization
     public void deleteById(int id) {
+        if (!noteRepository.existsByIdAndUser(id, getLoggedOnUser())) {
+            throw new AccessForbiddenException(FORBIDDEN_ACCESS_MESSAGE);
+        }
         noteRepository.deleteById(id);
     }
 
     @Override
-    //TODO authorization
     public void update(Integer oldId, CreateNoteRequest newCreateNoteRequest) {
         Note updatedNote = noteRepository.findById(oldId).
                 orElseThrow(() -> new NoteNotFoundException(NOTE_NOT_FOUND_MESSAGE));
+        if (!updatedNote.getUser().equals(getLoggedOnUser())) {
+            throw new AccessForbiddenException(FORBIDDEN_ACCESS_MESSAGE);
+        }
         if (newCreateNoteRequest.getTitle() != null) {
             updatedNote.setTitle(newCreateNoteRequest.getTitle());
         }

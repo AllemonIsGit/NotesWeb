@@ -10,4 +10,5 @@ import java.util.List;
 @Repository
 public interface NoteRepository extends JpaRepository<Note, Integer> {
     List<Note> findAllByUser(User user);
+    boolean existsByIdAndUser(int id, User user);
 }
