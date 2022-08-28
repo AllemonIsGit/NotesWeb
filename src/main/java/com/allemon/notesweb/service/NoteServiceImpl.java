@@ -1,6 +1,7 @@
 package com.allemon.notesweb.service;
 
 import com.allemon.notesweb.domain.dto.request.CreateNoteRequest;
+import com.allemon.notesweb.domain.dto.response.NoteResponse;
 import com.allemon.notesweb.domain.exception.AccessForbiddenException;
 import com.allemon.notesweb.domain.exception.NoteNotFoundException;
 import com.allemon.notesweb.domain.mapper.NoteMapper;
@@ -8,6 +9,8 @@ import com.allemon.notesweb.domain.model.Note;
 import com.allemon.notesweb.domain.model.User;
 import com.allemon.notesweb.repository.NoteRepository;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -41,8 +44,8 @@ public class NoteServiceImpl implements NoteService {
     }
 
     @Override
-    public List<Note> getAll() {
-        return noteRepository.findAllByUser(getLoggedOnUser());
+    public Page<NoteResponse> getAll(Pageable pageable) {
+        return noteRepository.findAllByUser(getLoggedOnUser(), pageable).map(noteMapper::mapToResponse);
     }
 
     @Override

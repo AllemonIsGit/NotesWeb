@@ -1,9 +1,12 @@
 package com.allemon.notesweb.controller;
 
 import com.allemon.notesweb.domain.dto.request.CreateNoteRequest;
+import com.allemon.notesweb.domain.dto.response.NoteResponse;
 import com.allemon.notesweb.domain.model.Note;
 import com.allemon.notesweb.service.NoteService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -34,13 +37,19 @@ public class NoteController {
     }
 
     @GetMapping
-    public ResponseEntity<List<Note>> getAllNotes() {
-        return ResponseEntity.status(HttpStatus.OK).body(noteService.getAll());
+    public ResponseEntity<Page<NoteResponse>> getAllNotes(Pageable pageable) {
+        return ResponseEntity.status(HttpStatus.OK).body(noteService.getAll(pageable));
     }
 
     @PutMapping("/{id}")
     public ResponseEntity<Void> patchNote(@PathVariable Integer id, @RequestBody @Valid CreateNoteRequest createNoteRequest) {
         noteService.update(id, createNoteRequest);
+        return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
+    }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Void> deleteNote(@PathVariable Integer id) {
+        noteService.deleteById(id);
         return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
     }
 

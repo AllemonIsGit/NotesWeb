@@ -21,7 +21,7 @@ public class JWTTokenUtil {
                 .withSubject(username)
                 .withIssuedAt(Date.from(Instant.now()))
                 .withIssuer("NotesWeb")
-                .withExpiresAt(Date.from(Instant.now().plus(5, ChronoUnit.MINUTES)))
+                .withExpiresAt(Date.from(Instant.now().plus(15, ChronoUnit.MINUTES)))
                 .sign(algorithm);
     }
 
