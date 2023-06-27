@@ -8,6 +8,8 @@ The API follows REST architectural principles, allowing integration with various
 <p>Feel free to explore the repository to see the code of this notebook application's REST API.<br/>
 For more information or to discuss potential job opportunities, please feel free to contact me.</p>
 
+[Client for this API](https://github.com/AllemonIsGit/NotesWeb_Front)
+
 ## <p> Features </p>
 <p>
 • Note creation/retrival/updating/deletion<br/>
